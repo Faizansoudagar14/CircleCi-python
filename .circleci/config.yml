@@ -11,13 +11,13 @@ jobs:
       - checkout 
       - run:
           name: Run build
-          command: |
             python --version
             python main.py
-  test:
+  test::
+    docker:
+      - image: circleci/python:3.8
       - run:  
         name: Run Test
-        command: |
           python tests.py
 
 workflows:
