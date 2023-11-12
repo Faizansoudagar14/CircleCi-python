@@ -14,4 +14,9 @@ jobs:
           name: Run Tests
           command: |
             python --version
-            - run: python tests.py
+            python tests.py
+
+workflows:
+  build_and_test_deploy:
+    jobs:
+      - build
