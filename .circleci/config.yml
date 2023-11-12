@@ -3,24 +3,15 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/python:3.11
+      - image: circleci/python:3.8
+
+    working_directory: ~/repo
+
     steps:
-      - checkout
-      - run: python main.py
-  test:
-    docker:
-      - image: cimg/python:3.11
-    steps:
-      - checkout
-      command: |
-        python --version
-      - run: python tests.py
- 
- workflows:
-  build_and_test_deploy:
-    jobs:
-      - build
-      - test:
-          requires:
-            - build 
-      
+      - checkout  # This is the checkout step
+
+      - run:
+          name: Run Tests
+          command: |
+            python --version
+            - run: python tests.py
